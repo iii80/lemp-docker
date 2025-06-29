@@ -59,11 +59,11 @@ jobs:
             PHP_VERSION=${{ matrix.php_version }}
             BUILD_FLAVOR=-phalcon
           tags: |
-            fbraz3/lnmp:${{ matrix.php_version }}-amd64-phalcon
+            iii80/lnmp:${{ matrix.php_version }}-amd64-phalcon
 
       - name: Test images - amd64
         run: |
-          docker run --name test -v $PWD:/app/public -p 80:80 -p 3306:3306 -it --rm -d --platform=linux/amd64 fbraz3/lnmp:${{ matrix.php_version }}-amd64-phalcon
+          docker run --name test -v $PWD:/app/public -p 80:80 -p 3306:3306 -it --rm -d --platform=linux/amd64 iii80/lnmp:${{ matrix.php_version }}-amd64-phalcon
           sleep 60
           echo "-----------"
           docker logs test
@@ -93,11 +93,11 @@ jobs:
             PHP_VERSION=${{ matrix.php_version }}
             BUILD_FLAVOR=-phalcon
           tags: |
-            fbraz3/lnmp:${{ matrix.php_version }}-arm64-phalcon
+            iii80/lnmp:${{ matrix.php_version }}-arm64-phalcon
 
       - name: Test images - arm64
         run: |
-          docker run --name test -v $PWD:/app/public -p 80:80 -p 3306:3306 -it --rm -d --platform=linux/arm64 fbraz3/lnmp:${{ matrix.php_version }}-arm64-phalcon
+          docker run --name test -v $PWD:/app/public -p 80:80 -p 3306:3306 -it --rm -d --platform=linux/arm64 iii80/lnmp:${{ matrix.php_version }}-arm64-phalcon
           sleep 60
           echo "-----------"
           docker logs test
@@ -134,7 +134,7 @@ jobs:
             PHP_VERSION=${{ matrix.php_version }}
             BUILD_FLAVOR=-phalcon
           tags: |
-            fbraz3/lnmp:${{ matrix.php_version }}-phalcon
-            fbraz3/lemp:${{ matrix.php_version }}-phalcon
-            ${{ matrix.is_latest && 'fbraz3/lnmp:latest-phalcon' || '' }}
-            ${{ matrix.is_latest && 'fbraz3/lemp:latest-phalcon' || '' }}
+            iii80/lnmp:${{ matrix.php_version }}-phalcon
+            iii80/lemp:${{ matrix.php_version }}-phalcon
+            ${{ matrix.is_latest && 'iii80/lnmp:latest-phalcon' || '' }}
+            ${{ matrix.is_latest && 'iii80/lemp:latest-phalcon' || '' }}
